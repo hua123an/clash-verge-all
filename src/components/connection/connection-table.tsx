@@ -428,6 +428,11 @@ export const ConnectionTable = (props: Props) => {
           minHeight: 0,
           position: 'relative',
           fontFamily: (theme) => theme.typography.fontFamily,
+          borderRadius: '28px',
+          background: 'var(--surface-panel)',
+          border: '1px solid var(--surface-border)',
+          boxShadow: 'var(--shadow-raised)',
+          overflow: 'hidden',
         }}
       >
         <Tooltip title={t('connections.components.columnManager.title')}>
@@ -436,16 +441,9 @@ export const ConnectionTable = (props: Props) => {
             onClick={onOpenColumnManager}
             sx={{
               position: 'absolute',
-              top: 4,
-              right: 4,
+              top: 10,
+              right: 10,
               zIndex: 3,
-              backgroundColor: (theme) =>
-                theme.palette.mode === 'dark'
-                  ? theme.palette.background.default
-                  : theme.palette.background.paper,
-              '&:hover': {
-                backgroundColor: (theme) => theme.palette.action.hover,
-              },
             }}
           >
             <ViewColumnRounded fontSize="small" />
@@ -459,7 +457,7 @@ export const ConnectionTable = (props: Props) => {
             overflow: 'auto',
             WebkitOverflowScrolling: 'touch',
             overscrollBehavior: 'contain',
-            borderRadius: 1,
+            borderRadius: '28px',
             border: 'none',
             '&::-webkit-scrollbar': {
               height: 8,
@@ -486,7 +484,8 @@ export const ConnectionTable = (props: Props) => {
                     display: 'flex',
                     borderBottom: (theme) =>
                       `1px solid ${theme.palette.divider}`,
-                    backgroundColor: (theme) => theme.palette.background.paper,
+                    background:
+                      'linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02))',
                   }}
                 >
                   {headerGroup.headers.map((header) => {
@@ -607,7 +606,8 @@ export const ConnectionTable = (props: Props) => {
                         `1px solid ${theme.palette.divider}`,
                       cursor: 'pointer',
                       '&:hover': {
-                        backgroundColor: (theme) => theme.palette.action.hover,
+                        backgroundColor: (theme) =>
+                          theme.palette.action.hover,
                       },
                     }}
                   >

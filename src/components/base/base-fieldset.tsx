@@ -1,5 +1,5 @@
 import { Box, styled } from '@mui/material'
-import React from 'react'
+import type React from 'react'
 
 type Props = {
   label: string
@@ -18,21 +18,24 @@ export const BaseFieldset: React.FC<Props> = ({
 }: Props) => {
   const Fieldset = styled(Box)<{ component?: string }>(() => ({
     position: 'relative',
-    border: '1px solid #bbb',
-    borderRadius: '5px',
+    border: '1px solid var(--surface-border)',
+    borderRadius: '24px',
+    background: 'var(--surface-panel)',
+    boxShadow: 'var(--shadow-inset)',
     width: width ?? 'auto',
-    padding: padding ?? '15px',
+    padding: padding ?? '18px',
   }))
 
   const Label = styled('legend')(({ theme }) => ({
     position: 'absolute',
-    top: '-10px',
-    left: padding ?? '15px',
-    backgroundColor: theme.palette.background.paper,
-    backgroundImage:
-      'linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16))',
+    top: '-12px',
+    left: padding ?? '18px',
+    padding: '0 10px',
+    borderRadius: '999px',
+    background: 'var(--surface-panel)',
     color: theme.palette.text.primary,
     fontSize: fontSize ?? '1em',
+    fontWeight: 700,
   }))
 
   return (

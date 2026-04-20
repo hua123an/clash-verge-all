@@ -134,7 +134,14 @@ export const BaseSplitChipEditor = ({
     <>
       {renderHeader ? renderHeader(modeToggle) : modeToggle}
       {mode === 'visual' ? (
-        <Box sx={{ padding: '0 2px 5px' }}>
+        <Box
+          sx={{
+            padding: '6px',
+            borderRadius: '24px',
+            background: 'var(--surface-panel-inset)',
+            boxShadow: 'var(--shadow-inset)',
+          }}
+        >
           <Box
             sx={{
               display: 'flex',

@@ -27,18 +27,21 @@ export const TestBox = styled(Box)(({ theme, 'aria-selected': selected }) => {
     display: 'block',
     cursor: 'pointer',
     textAlign: 'left',
-    borderRadius: 8,
-    boxShadow: theme.shadows[1],
-    padding: '8px 16px',
+    borderRadius: 24,
+    boxShadow: 'var(--shadow-raised-sm)',
+    padding: '12px 18px',
     boxSizing: 'border-box',
-    backgroundColor,
+    background: 'var(--surface-panel)',
+    border: '1px solid var(--surface-border)',
     color,
     '& h2': { color: h2color },
     transition: 'background-color 0.3s, box-shadow 0.3s',
     '&:hover': {
-      backgroundColor:
-        mode === 'light' ? alpha(primary.main, 0.1) : alpha(primary.main, 0.15),
-      boxShadow: theme.shadows[2],
+      background:
+        mode === 'light'
+          ? `linear-gradient(145deg, ${alpha(primary.main, 0.1)}, rgba(255,255,255,0.88))`
+          : `linear-gradient(145deg, ${alpha(primary.main, 0.14)}, rgba(255,255,255,0.04))`,
+      boxShadow: 'var(--shadow-inset)',
     },
   }
 })

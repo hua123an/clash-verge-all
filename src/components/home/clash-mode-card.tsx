@@ -98,9 +98,18 @@ export const ClashModeCard = () => {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 1,
-    bgcolor: mode === currentModeKey ? 'primary.main' : 'background.paper',
+    bgcolor: 'transparent',
+    background:
+      mode === currentModeKey
+        ? 'linear-gradient(135deg, rgba(74, 120, 246, 0.24), rgba(255,255,255,0.04))'
+        : 'var(--surface-panel)',
     color: mode === currentModeKey ? 'primary.contrastText' : 'text.primary',
-    borderRadius: 1.5,
+    borderRadius: '20px',
+    border: '1px solid var(--surface-border)',
+    boxShadow:
+      mode === currentModeKey
+        ? 'var(--shadow-inset)'
+        : 'var(--shadow-raised-sm)',
     transition: 'all 0.2s ease-in-out',
     position: 'relative',
     overflow: 'visible',
@@ -131,12 +140,11 @@ export const ClashModeCard = () => {
     width: '95%',
     textAlign: 'center',
     color: 'text.secondary',
-    p: 0.8,
-    borderRadius: 1,
-    borderColor: 'primary.main',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    backgroundColor: 'background.paper',
+    p: 1,
+    borderRadius: '18px',
+    border: '1px solid var(--surface-border)',
+    background: 'var(--surface-panel-inset)',
+    boxShadow: 'var(--shadow-inset)',
     wordBreak: 'break-word',
     hyphens: 'auto',
   }

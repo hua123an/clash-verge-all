@@ -1,6 +1,5 @@
 import { Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 import { BaseErrorBoundary } from './base-error-boundary'
 
@@ -14,9 +13,6 @@ interface Props {
 
 export const BasePage: React.FC<Props> = (props) => {
   const { title, header, contentStyle, full, children } = props
-  const theme = useTheme()
-
-  const isDark = theme.palette.mode === 'dark'
 
   return (
     <BaseErrorBoundary>
@@ -34,11 +30,11 @@ export const BasePage: React.FC<Props> = (props) => {
 
         <div
           className={full ? 'base-container no-padding' : 'base-container'}
-          style={{ backgroundColor: isDark ? '#1e1f27' : '#ffffff' }}
+          style={{ backgroundColor: 'transparent' }}
         >
           <section
             style={{
-              backgroundColor: isDark ? '#1e1f27' : 'var(--background-color)',
+              backgroundColor: 'transparent',
             }}
           >
             <div className="base-content" style={contentStyle}>

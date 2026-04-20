@@ -4,10 +4,13 @@ import type { ReactNode } from 'react'
 import type { SearchState } from '@/components/base'
 
 const Item = styled(Box)(({ theme: { palette, typography } }) => ({
-  padding: '8px 0',
-  margin: '0 12px',
+  padding: '10px 14px',
+  margin: '0 12px 10px',
   lineHeight: 1.35,
-  borderBottom: `1px solid ${palette.divider}`,
+  border: `1px solid var(--surface-border)`,
+  borderRadius: 20,
+  background: 'var(--surface-panel)',
+  boxShadow: 'var(--shadow-raised-sm)',
   fontSize: '0.875rem',
   fontFamily: typography.fontFamily,
   userSelect: 'text',
@@ -18,9 +21,12 @@ const Item = styled(Box)(({ theme: { palette, typography } }) => ({
     display: 'inline-block',
     marginLeft: 8,
     textAlign: 'center',
-    borderRadius: 2,
+    borderRadius: 10,
     textTransform: 'uppercase',
     fontWeight: '600',
+    background: 'var(--surface-panel-inset)',
+    padding: '2px 8px',
+    boxShadow: 'var(--shadow-inset)',
   },
   '& .type[data-type="error"], & .type[data-type="err"]': {
     color: palette.error.main,
@@ -37,8 +43,8 @@ const Item = styled(Box)(({ theme: { palette, typography } }) => ({
   },
   '& .highlight': {
     backgroundColor: palette.mode === 'dark' ? '#ffeb3b40' : '#ffeb3b90',
-    borderRadius: 2,
-    padding: '0 2px',
+    borderRadius: 8,
+    padding: '1px 4px',
   },
 }))
 

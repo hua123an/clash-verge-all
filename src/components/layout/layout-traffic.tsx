@@ -52,22 +52,18 @@ export const LayoutTraffic = () => {
   const [down, downUnit] = parseTraffic(traffic?.down || 0)
   const [inuse, inuseUnit] = parseTraffic(memory?.inuse || 0)
 
-  const boxStyle: any = {
-    sx: {
-      display: 'flex',
-      alignItems: 'center',
-      whiteSpace: 'nowrap',
-    },
+  const rowSx = {
+    display: 'flex',
+    alignItems: 'center',
+    whiteSpace: 'nowrap',
   }
-  const iconStyle: any = {
-    sx: { mr: '8px', fontSize: 16 },
-  }
-  const valStyle: any = {
-    component: 'span',
+  const iconSx = { mr: '8px', fontSize: 16 }
+  const valueTypographyProps = {
+    component: 'span' as const,
     sx: { flex: '1 1 56px', userSelect: 'none', textAlign: 'center' },
   }
-  const unitStyle: any = {
-    component: 'span',
+  const unitTypographyProps = {
+    component: 'span' as const,
     color: 'grey.500',
     sx: {
       flex: '0 1 27px',
@@ -79,70 +75,77 @@ export const LayoutTraffic = () => {
 
   return (
     <LightweightTrafficErrorBoundary>
-      <Box sx={{ position: 'relative' }}>
+      <Box
+        sx={{
+          position: 'relative',
+          borderRadius: '22px',
+        }}
+      >
         {trafficGraph && pageVisible && (
-          <div
-            style={{ width: '100%', height: 60, marginBottom: 6 }}
+          <Box
+            role="button"
+            tabIndex={0}
+            style={{ width: '100%', height: 64, marginBottom: 10 }}
             onClick={trafficRef.current?.toggleStyle}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                trafficRef.current?.toggleStyle()
+              }
+            }}
           >
             <TrafficGraph ref={trafficRef} />
-          </div>
+          </Box>
         )}
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.75 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Box
             title={`${t('home.components.traffic.metrics.uploadSpeed')}`}
-            {...boxStyle}
             sx={{
-              ...boxStyle.sx,
-              // opacity: traffic?.is_fresh ? 1 : 0.6,
+              ...rowSx,
             }}
           >
             <ArrowUpwardRounded
-              {...iconStyle}
+              sx={iconSx}
               color={(traffic?.up || 0) > 0 ? 'secondary' : 'disabled'}
             />
-            <Typography {...valStyle} color="secondary">
+            <Typography {...valueTypographyProps} color="secondary">
               {up}
             </Typography>
-            <Typography {...unitStyle}>{upUnit}/s</Typography>
+            <Typography {...unitTypographyProps}>{upUnit}/s</Typography>
           </Box>
 
           <Box
             title={`${t('home.components.traffic.metrics.downloadSpeed')}`}
-            {...boxStyle}
             sx={{
-              ...boxStyle.sx,
-              // opacity: traffic?.is_fresh ? 1 : 0.6,
+              ...rowSx,
             }}
           >
             <ArrowDownwardRounded
-              {...iconStyle}
+              sx={iconSx}
               color={(traffic?.down || 0) > 0 ? 'primary' : 'disabled'}
             />
-            <Typography {...valStyle} color="primary">
+            <Typography {...valueTypographyProps} color="primary">
               {down}
             </Typography>
-            <Typography {...unitStyle}>{downUnit}/s</Typography>
+            <Typography {...unitTypographyProps}>{downUnit}/s</Typography>
           </Box>
 
           {displayMemory && (
             <Box
               title={`${t('home.components.traffic.metrics.memoryUsage')} `}
-              {...boxStyle}
               sx={{
-                ...boxStyle.sx,
+                ...rowSx,
                 cursor: 'auto',
-                // opacity: memory?.is_fresh ? 1 : 0.6,
               }}
               color={'disabled'}
               onClick={async () => {
                 // isDebug && (await gc());
               }}
             >
-              <MemoryRounded {...iconStyle} />
-              <Typography {...valStyle}>{inuse}</Typography>
-              <Typography {...unitStyle}>{inuseUnit}</Typography>
+              <MemoryRounded sx={iconSx} />
+              <Typography {...valueTypographyProps}>{inuse}</Typography>
+              <Typography {...unitTypographyProps}>{inuseUnit}</Typography>
             </Box>
           )}
         </Box>

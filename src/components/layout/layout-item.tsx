@@ -63,27 +63,40 @@ export const LayoutItem = (props: Props) => {
         {...(dragHandleProps ?? {})}
         sx={[
           {
-            borderRadius: 2,
-            marginLeft: 1.25,
-            paddingLeft: 1,
-            paddingRight: 1,
-            marginRight: 1.25,
+            borderRadius: '22px',
+            marginLeft: 0,
+            paddingLeft: 1.25,
+            paddingRight: 1.25,
+            marginRight: 0,
             cursor: draggable ? 'grab' : 'pointer',
+            minHeight: 56,
+            background: 'var(--surface-panel)',
+            border: '1px solid var(--surface-border)',
+            boxShadow: 'var(--shadow-raised-sm)',
             '&:active': draggable ? { cursor: 'grabbing' } : {},
             '& .MuiListItemText-primary': {
               color: 'text.primary',
               fontWeight: '700',
             },
+            '&:hover': {
+              background: 'var(--surface-panel-inset)',
+              boxShadow: 'var(--shadow-inset)',
+            },
           },
           ({ palette: { mode, primary } }) => {
-            const bgcolor =
+            const selectedBackground =
               mode === 'light'
-                ? alpha(primary.main, 0.15)
-                : alpha(primary.main, 0.35)
-            const color = mode === 'light' ? '#1f1f1f' : '#ffffff'
+                ? `linear-gradient(135deg, ${alpha(primary.main, 0.18)}, rgba(255,255,255,0.88))`
+                : `linear-gradient(135deg, ${alpha(primary.main, 0.2)}, rgba(255,255,255,0.04))`
+            const color = mode === 'light' ? '#162033' : '#f3f6ff'
             return {
-              '&.Mui-selected': { bgcolor },
-              '&.Mui-selected:hover': { bgcolor },
+              '&.Mui-selected': {
+                background: selectedBackground,
+                boxShadow: 'var(--shadow-inset)',
+              },
+              '&.Mui-selected:hover': {
+                background: selectedBackground,
+              },
               '&.Mui-selected .MuiListItemText-primary': { color },
             }
           },
@@ -96,7 +109,7 @@ export const LayoutItem = (props: Props) => {
           <ListItemIcon
             sx={{
               color: 'text.primary',
-              marginLeft: '6px',
+              marginLeft: '8px',
               cursor: draggable ? 'grab' : 'inherit',
             }}
           >
@@ -111,7 +124,7 @@ export const LayoutItem = (props: Props) => {
         <ListItemText
           sx={{
             textAlign: 'center',
-            marginLeft: effectiveMenuIcon === 'disable' ? '' : '-35px',
+            marginLeft: effectiveMenuIcon === 'disable' ? '' : '-30px',
           }}
           primary={children}
         />

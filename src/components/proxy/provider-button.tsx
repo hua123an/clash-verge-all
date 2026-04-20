@@ -29,14 +29,15 @@ import parseTraffic from '@/utils/parse-traffic'
 // 样式化组件 - 类型框
 const TypeBox = styled(Box)<{ component?: React.ElementType }>(({ theme }) => ({
   display: 'inline-block',
-  border: '1px solid #ccc',
-  borderColor: alpha(theme.palette.secondary.main, 0.5),
+  border: '1px solid var(--surface-border)',
+  borderColor: alpha(theme.palette.secondary.main, 0.35),
   color: alpha(theme.palette.secondary.main, 0.8),
-  borderRadius: 4,
+  borderRadius: 10,
   fontSize: 10,
   marginRight: '4px',
-  padding: '0 2px',
+  padding: '2px 6px',
   lineHeight: 1.25,
+  background: 'var(--surface-panel)',
 }))
 
 // 解析过期时间
@@ -206,21 +207,21 @@ export const ProviderButton = () => {
                       {
                         p: 0,
                         mb: '8px',
-                        borderRadius: 2,
+                        borderRadius: '22px',
                         overflow: 'hidden',
                         transition: 'all 0.2s',
+                        border: '1px solid var(--surface-border)',
+                        boxShadow: 'var(--shadow-raised-sm)',
                       },
                       ({ palette: { mode, primary } }) => {
-                        const bgcolor = mode === 'light' ? '#ffffff' : '#24252f'
-                        const hoverColor =
-                          mode === 'light'
-                            ? alpha(primary.main, 0.1)
-                            : alpha(primary.main, 0.2)
-
                         return {
-                          backgroundColor: bgcolor,
+                          background: 'var(--surface-panel)',
                           '&:hover': {
-                            backgroundColor: hoverColor,
+                            background: `linear-gradient(135deg, ${alpha(
+                              primary.main,
+                              mode === 'light' ? 0.1 : 0.14,
+                            )}, rgba(255,255,255,0.02))`,
+                            boxShadow: 'var(--shadow-inset)',
                           },
                         }
                       },

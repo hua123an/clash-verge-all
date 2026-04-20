@@ -1,5 +1,5 @@
 import { Box, Typography, alpha, useTheme } from '@mui/material'
-import React, { forwardRef, ReactNode } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 
 // 自定义卡片组件接口
 interface EnhancedCardProps {
@@ -45,20 +45,26 @@ export const EnhancedCard = forwardRef<HTMLElement, EnhancedCardProps>(
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          borderRadius: 2,
-          backgroundColor: isDark ? '#282a36' : '#ffffff',
+          borderRadius: '30px',
+          background: 'var(--surface-panel)',
+          border: '1px solid var(--surface-border)',
+          boxShadow: 'var(--shadow-raised)',
+          overflow: 'hidden',
         }}
         ref={ref}
       >
         <Box
           sx={{
-            px: 2,
-            py: 1,
+            px: 2.5,
+            py: 1.5,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             borderBottom: 1,
-            borderColor: 'divider',
+            borderColor: alpha(theme.palette.divider, isDark ? 0.55 : 0.8),
+            background: isDark
+              ? 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0))'
+              : 'linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0))',
           }}
         >
           <Box
@@ -75,13 +81,17 @@ export const EnhancedCard = forwardRef<HTMLElement, EnhancedCardProps>(
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderRadius: 1.5,
-                width: 38,
-                height: 38,
-                mr: 1.5,
+                borderRadius: '18px',
+                width: 42,
+                height: 42,
+                mr: 1.75,
                 flexShrink: 0,
-                backgroundColor: alpha(theme.palette[iconColor].main, 0.12),
+                background: `linear-gradient(145deg, ${alpha(
+                  theme.palette[iconColor].main,
+                  0.18,
+                )}, ${alpha(theme.palette[iconColor].main, 0.08)})`,
                 color: theme.palette[iconColor].main,
+                boxShadow: 'var(--shadow-inset)',
               }}
             >
               {icon}
@@ -111,7 +121,7 @@ export const EnhancedCard = forwardRef<HTMLElement, EnhancedCardProps>(
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
-            p: noContentPadding ? 0 : 2,
+            p: noContentPadding ? 0 : 2.5,
             ...(minHeight && { minHeight }),
           }}
         >

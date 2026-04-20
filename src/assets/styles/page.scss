@@ -4,23 +4,21 @@
   display: flex;
   flex-direction: column;
   > header {
-    flex: 0 0 58px;
+    flex: 0 0 68px;
     width: 100%;
-    // max-width: 850px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 10px 24px 6px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--divider-color);
+    border-bottom: none;
   }
 
   .base-container {
     height: 100%;
     overflow: hidden;
-    // border-radius: 10px;
-    // border-top-left-radius: var(--border-radius);
+    background: transparent;
 
     > section {
       position: relative;
@@ -28,11 +26,11 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      padding: 10px 0;
+      padding: 4px 0 18px;
       box-sizing: border-box;
       scrollbar-gutter: stable;
       .base-content {
-        width: calc(100% - 10px * 2);
+        width: calc(100% - 18px * 2);
         margin: 0 auto;
       }
     }

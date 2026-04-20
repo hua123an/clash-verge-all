@@ -129,7 +129,6 @@ const Layout = () => {
   const [menuContextPosition, setMenuContextPosition] =
     useState<MenuContextPosition | null>(null)
 
-  const windowControlsRef = useRef<any>(null)
   const { decorated } = useWindowDecorations()
 
   const sensors = useSensors(
@@ -209,7 +208,7 @@ const Layout = () => {
     () =>
       !decorated ? (
         <div className="the_titlebar" data-tauri-drag-region="true">
-          <WindowControls ref={windowControlsRef} />
+          <WindowControls />
         </div>
       ) : null,
     [decorated],
@@ -277,10 +276,6 @@ const Layout = () => {
         square
         elevation={0}
         className={`${OS} layout${navCollapsed ? ' layout--nav-collapsed' : ''}`}
-        style={{
-          borderTopLeftRadius: '0px',
-          borderTopRightRadius: '0px',
-        }}
         onContextMenu={(e) => {
           if (
             OS === 'windows' &&
@@ -293,10 +288,15 @@ const Layout = () => {
           }
         }}
         sx={[
-          ({ palette }) => ({ bgcolor: palette.background.paper }),
+          () => ({
+            bgcolor: 'transparent',
+            backgroundImage: 'none',
+            border: 'none',
+            boxShadow: 'none',
+          }),
           OS === 'linux'
             ? {
-                borderRadius: '8px',
+                borderRadius: '24px',
                 width: '100vw',
                 height: '100vh',
               }
@@ -312,19 +312,20 @@ const Layout = () => {
               <div
                 data-tauri-drag-region="true"
                 style={{
-                  height: '27px',
+                  height: '30px',
                   display: 'flex',
                   justifyContent: 'space-between',
+                  alignItems: 'center',
                 }}
               >
                 <SvgIcon
                   component={isDark ? iconDark : iconLight}
                   style={{
-                    height: '36px',
-                    width: '36px',
-                    marginTop: '-3px',
-                    marginRight: '5px',
-                    marginLeft: '-3px',
+                    height: '38px',
+                    width: '38px',
+                    marginTop: '-2px',
+                    marginRight: '8px',
+                    marginLeft: '-2px',
                   }}
                   inheritViewBox
                 />

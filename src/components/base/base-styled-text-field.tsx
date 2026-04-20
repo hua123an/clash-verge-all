@@ -13,12 +13,13 @@ export const BaseStyledTextField = styled((props: TextFieldProps) => {
       variant="outlined"
       spellCheck="false"
       placeholder={t('shared.placeholders.filter')}
-      sx={{ input: { py: 0.65, px: 1.25 } }}
+      sx={{ input: { py: 0.8, px: 1.35 } }}
       {...props}
     />
   )
-})(({ theme }) => ({
+})(() => ({
   '& .MuiInputBase-root': {
-    background: theme.palette.mode === 'light' ? '#fff' : undefined,
+    background: 'var(--surface-panel)',
+    boxShadow: 'var(--shadow-inset)',
   },
 }))

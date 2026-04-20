@@ -166,15 +166,15 @@ export const NoticeManager: React.FC<NoticeManagerProps> = ({ position }) => {
     <Box
       sx={{
         position: 'fixed',
-        top: anchorOrigin.vertical === 'top' ? '20px' : 'auto',
-        bottom: anchorOrigin.vertical === 'bottom' ? '20px' : 'auto',
-        left: anchorOrigin.horizontal === 'left' ? '20px' : 'auto',
-        right: anchorOrigin.horizontal === 'right' ? '20px' : 'auto',
+        top: anchorOrigin.vertical === 'top' ? '24px' : 'auto',
+        bottom: anchorOrigin.vertical === 'bottom' ? '24px' : 'auto',
+        left: anchorOrigin.horizontal === 'left' ? '24px' : 'auto',
+        right: anchorOrigin.horizontal === 'right' ? '24px' : 'auto',
         zIndex: 1500,
         display: 'flex',
         flexDirection: 'column',
-        gap: '10px',
-        maxWidth: '360px',
+        gap: '12px',
+        maxWidth: '400px',
       }}
     >
       {currentNotices.map((notice) => (
@@ -194,8 +194,12 @@ export const NoticeManager: React.FC<NoticeManagerProps> = ({ position }) => {
         >
           <Alert
             severity={notice.type}
-            variant="filled"
-            sx={{ width: '100%' }}
+            variant="standard"
+            sx={{
+              width: '100%',
+              backdropFilter: 'blur(18px)',
+              background: 'var(--surface-panel)',
+            }}
             onContextMenu={(event) => {
               event.preventDefault()
               event.stopPropagation()

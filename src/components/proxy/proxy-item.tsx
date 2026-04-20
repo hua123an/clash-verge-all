@@ -27,21 +27,23 @@ interface Props {
 }
 
 const Widget = styled(Box)(() => ({
-  padding: '3px 6px',
+  padding: '4px 8px',
   fontSize: 14,
-  borderRadius: '4px',
+  borderRadius: '14px',
+  background: 'var(--surface-panel-inset)',
+  boxShadow: 'var(--shadow-inset)',
 }))
 
 const TypeBox = styled('span')(({ theme }) => ({
   display: 'inline-block',
-  border: '1px solid #ccc',
-  borderColor: alpha(theme.palette.text.secondary, 0.36),
+  border: '1px solid var(--surface-border)',
   color: alpha(theme.palette.text.secondary, 0.42),
-  borderRadius: 4,
+  borderRadius: 10,
   fontSize: 10,
   marginRight: '4px',
-  padding: '0 2px',
+  padding: '2px 6px',
   lineHeight: 1.25,
+  background: 'var(--surface-panel)',
 }))
 
 export const ProxyItem = (props: Props) => {
@@ -119,9 +121,12 @@ export const ProxyItem = (props: Props) => {
         selected={selected}
         onClick={() => onClick?.(proxy.name)}
         sx={[
-          { borderRadius: 1 },
+          {
+            borderRadius: '20px',
+            border: '1px solid var(--surface-border)',
+            boxShadow: 'var(--shadow-raised-sm)',
+          },
           ({ palette: { mode, primary } }) => {
-            const bgcolor = mode === 'light' ? '#ffffff' : '#24252f'
             const selectColor = mode === 'light' ? primary.main : primary.light
             const showDelay = delayValue > 0
 
@@ -133,14 +138,15 @@ export const ProxyItem = (props: Props) => {
                 width: `calc(100% + 3px)`,
                 marginLeft: `-3px`,
                 borderLeft: `3px solid ${selectColor}`,
-                bgcolor:
-                  mode === 'light'
-                    ? alpha(primary.main, 0.15)
-                    : alpha(primary.main, 0.35),
+                background: `linear-gradient(135deg, ${alpha(
+                  primary.main,
+                  mode === 'light' ? 0.18 : 0.26,
+                )}, rgba(255,255,255,0.03))`,
+                boxShadow: 'var(--shadow-inset)',
               },
-              backgroundColor: bgcolor,
+              background: 'var(--surface-panel)',
               marginBottom: '8px',
-              height: '40px',
+              height: '44px',
             }
           },
         ]}
@@ -197,7 +203,7 @@ export const ProxyItem = (props: Props) => {
               }}
               sx={({ palette }) => ({
                 display: 'none', // hover 时显示
-                ':hover': { bgcolor: alpha(palette.primary.main, 0.15) },
+                ':hover': { bgcolor: alpha(palette.primary.main, 0.12) },
               })}
             >
               Check
@@ -217,7 +223,7 @@ export const ProxyItem = (props: Props) => {
               sx={({ palette }) => ({
                 color: delayManager.formatDelayColor(delayValue, timeout),
                 ...(!proxy.provider
-                  ? { ':hover': { bgcolor: alpha(palette.primary.main, 0.15) } }
+                  ? { ':hover': { bgcolor: alpha(palette.primary.main, 0.12) } }
                   : {}),
               })}
             >

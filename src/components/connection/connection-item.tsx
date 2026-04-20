@@ -5,7 +5,6 @@ import {
   IconButton,
   ListItemText,
   Box,
-  alpha,
 } from '@mui/material'
 import { useLockFn } from 'ahooks'
 import dayjs from 'dayjs'
@@ -14,13 +13,14 @@ import { closeConnection } from 'tauri-plugin-mihomo-api'
 
 import parseTraffic from '@/utils/parse-traffic'
 
-const Tag = styled('span')(({ theme }) => ({
+const Tag = styled('span')(() => ({
   fontSize: '10px',
-  padding: '0 4px',
+  padding: '2px 6px',
   lineHeight: 1.375,
-  border: '1px solid',
-  borderRadius: 4,
-  borderColor: alpha(theme.palette.text.secondary, 0.35),
+  border: '1px solid var(--surface-border)',
+  borderRadius: 10,
+  background: 'var(--surface-panel)',
+  boxShadow: 'var(--shadow-inset)',
   marginTop: '4px',
   marginRight: '4px',
 }))
@@ -43,7 +43,14 @@ export const ConnectionItem = (props: Props) => {
   return (
     <ListItem
       dense
-      sx={{ borderBottom: '1px solid var(--divider-color)' }}
+      sx={{
+        border: '1px solid var(--surface-border)',
+        borderRadius: '20px',
+        background: 'var(--surface-panel)',
+        boxShadow: 'var(--shadow-raised-sm)',
+        mb: 1,
+        px: 0.5,
+      }}
       secondaryAction={
         !closed && (
           <IconButton

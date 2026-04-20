@@ -329,8 +329,6 @@ const UnlockPage = () => {
     return theme.palette.divider
   }
 
-  const isDark = theme.palette.mode === 'dark'
-
   return (
     <BasePage
       title={t('tests.unlock.page.title')}
@@ -375,15 +373,15 @@ const UnlockPage = () => {
                 variant="outlined"
                 sx={{
                   height: '100%',
-                  borderRadius: 2,
+                  borderRadius: '26px',
                   borderLeft: `4px solid ${getStatusBorderColor(item.status)}`,
-                  backgroundColor: isDark ? '#282a36' : '#ffffff',
+                  background: 'var(--surface-panel)',
+                  border: '1px solid var(--surface-border)',
+                  boxShadow: 'var(--shadow-raised)',
                   position: 'relative',
                   overflow: 'hidden',
                   '&:hover': {
-                    backgroundColor: isDark
-                      ? alpha(theme.palette.primary.dark, 0.05)
-                      : alpha(theme.palette.primary.light, 0.05),
+                    boxShadow: 'var(--shadow-inset)',
                   },
                   display: 'flex',
                   flexDirection: 'column',
@@ -420,7 +418,7 @@ const UnlockPage = () => {
                             minWidth: '32px',
                             width: '32px',
                             height: '32px',
-                            borderRadius: '50%',
+                            borderRadius: '14px',
                           }}
                           onClick={() => checkSingleMedia(item.name)}
                         >
@@ -474,7 +472,7 @@ const UnlockPage = () => {
                   sx={{
                     borderStyle: 'dashed',
                     borderColor: alpha(theme.palette.divider, 0.2),
-                    mx: 1,
+                    mx: 1.5,
                   }}
                 />
 

@@ -95,14 +95,15 @@ export const ProxyItemMini = (props: Props) => {
       sx={[
         {
           height: 56,
-          borderRadius: 1.5,
+          borderRadius: '20px',
           pl: 1.5,
           pr: 1,
           justifyContent: 'space-between',
           alignItems: 'center',
+          border: '1px solid var(--surface-border)',
+          boxShadow: 'var(--shadow-raised-sm)',
         },
         ({ palette: { mode, primary } }) => {
-          const bgcolor = mode === 'light' ? '#ffffff' : '#24252f'
           const showDelay = delayValue > 0
           const selectColor = mode === 'light' ? primary.main : primary.light
 
@@ -121,12 +122,13 @@ export const ProxyItemMini = (props: Props) => {
               width: `calc(100% + 3px)`,
               marginLeft: `-3px`,
               borderLeft: `3px solid ${selectColor}`,
-              bgcolor:
-                mode === 'light'
-                  ? alpha(primary.main, 0.15)
-                  : alpha(primary.main, 0.35),
+              background: `linear-gradient(135deg, ${alpha(
+                primary.main,
+                mode === 'light' ? 0.18 : 0.26,
+              )}, rgba(255,255,255,0.03))`,
+              boxShadow: 'var(--shadow-inset)',
             },
-            backgroundColor: bgcolor,
+            background: 'var(--surface-panel)',
           }
         },
       ]}
@@ -231,7 +233,7 @@ export const ProxyItemMini = (props: Props) => {
             }}
             sx={({ palette }) => ({
               display: 'none', // hover 时显示
-              ':hover': { bgcolor: alpha(palette.primary.main, 0.15) },
+              ':hover': { bgcolor: alpha(palette.primary.main, 0.12) },
             })}
           >
             Check
@@ -251,7 +253,7 @@ export const ProxyItemMini = (props: Props) => {
             sx={({ palette }) => ({
               color: delayManager.formatDelayColor(delayValue, timeout),
               ...(!proxy.provider
-                ? { ':hover': { bgcolor: alpha(palette.primary.main, 0.15) } }
+                ? { ':hover': { bgcolor: alpha(palette.primary.main, 0.12) } }
                 : {}),
             })}
           >
@@ -287,24 +289,26 @@ export const ProxyItemMini = (props: Props) => {
 }
 
 const Widget = styled(Box)(({ theme: { typography } }) => ({
-  padding: '2px 4px',
+  padding: '4px 8px',
   fontSize: 14,
   fontFamily: typography.fontFamily,
-  borderRadius: '4px',
+  borderRadius: '14px',
+  background: 'var(--surface-panel-inset)',
+  boxShadow: 'var(--shadow-inset)',
 }))
 
 const TypeBox = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'component',
 })<{ component?: React.ElementType }>(({ theme: { typography } }) => ({
   display: 'inline-block',
-  border: '1px solid #ccc',
-  borderColor: 'text.secondary',
+  border: '1px solid var(--surface-border)',
+  background: 'var(--surface-panel)',
   color: 'text.secondary',
-  borderRadius: 4,
+  borderRadius: 10,
   fontSize: 10,
   fontFamily: typography.fontFamily,
   marginRight: '4px',
   marginTop: 'auto',
-  padding: '0 4px',
+  padding: '2px 6px',
   lineHeight: 1.5,
 }))

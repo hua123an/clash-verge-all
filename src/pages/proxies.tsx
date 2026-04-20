@@ -137,7 +137,19 @@ const ProxyPage = () => {
           : t('proxies.page.title.default')
       }
       header={
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1,
+            px: 1.25,
+            py: 0.75,
+            borderRadius: '22px',
+            background: 'var(--surface-panel)',
+            border: '1px solid var(--surface-border)',
+            boxShadow: 'var(--shadow-raised-sm)',
+          }}
+        >
           <ProviderButton />
 
           <ButtonGroup size="small">

@@ -166,10 +166,12 @@ const TrafficErrorFallback: React.FC<TrafficErrorFallbackProps> = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        border: '1px dashed',
+        border: '1px solid',
         borderColor: 'error.main',
-        borderRadius: 2,
-        bgcolor: 'error.light',
+        borderRadius: '24px',
+        bgcolor: 'transparent',
+        background: 'var(--surface-panel)',
+        boxShadow: 'var(--shadow-raised)',
         color: 'error.contrastText',
       }}
     >
@@ -232,10 +234,12 @@ const TrafficErrorFallback: React.FC<TrafficErrorFallbackProps> = ({
         <Box
           sx={{
             p: 2,
-            bgcolor: 'background.paper',
-            borderRadius: 1,
+            bgcolor: 'transparent',
+            background: 'var(--surface-panel-inset)',
+            borderRadius: '20px',
             border: '1px solid',
-            borderColor: 'divider',
+            borderColor: 'var(--surface-border)',
+            boxShadow: 'var(--shadow-inset)',
           }}
         >
           <Typography variant="subtitle2" gutterBottom>

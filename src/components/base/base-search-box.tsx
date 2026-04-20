@@ -2,7 +2,7 @@ import { ClearRounded } from '@mui/icons-material'
 import { Box, SvgIcon, TextField, styled, IconButton } from '@mui/material'
 import Tooltip from '@mui/material/Tooltip'
 import {
-  ChangeEvent,
+  type ChangeEvent,
   useCallback,
   useEffect,
   useMemo,
@@ -39,7 +39,8 @@ type SearchProps = {
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputBase-root': {
-    background: theme.palette.mode === 'light' ? '#fff' : undefined,
+    background: 'var(--surface-panel)',
+    boxShadow: 'var(--shadow-inset)',
     paddingRight: '4px',
   },
   "& .MuiInputBase-root svg[aria-label='active'] path": {
@@ -197,7 +198,7 @@ export const BaseSearchBox = ({
         autoFocus={autoFocus}
         spellCheck="false"
         placeholder={placeholder ?? t('shared.placeholders.filter')}
-        sx={{ input: { py: 0.65, px: 1.25 } }}
+        sx={{ input: { py: 0.8, px: 1.35 } }}
         value={text}
         onChange={handleChangeText}
         error={!!effectiveErrorMessage}

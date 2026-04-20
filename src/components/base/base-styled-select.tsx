@@ -1,4 +1,4 @@
-import { Select, SelectProps, styled } from '@mui/material'
+import { Select, styled, type SelectProps } from '@mui/material'
 
 export const BaseStyledSelect = styled((props: SelectProps<string>) => {
   return (
@@ -7,13 +7,14 @@ export const BaseStyledSelect = styled((props: SelectProps<string>) => {
       autoComplete="new-password"
       sx={{
         width: 120,
-        height: 33.375,
+        height: 42,
         mr: 1,
-        '[role="button"]': { py: 0.65 },
+        '[role="button"]': { py: 1 },
       }}
       {...props}
     />
   )
-})(({ theme }) => ({
-  background: theme.palette.mode === 'light' ? '#fff' : undefined,
-}))
+})({
+  background: 'var(--surface-panel)',
+  boxShadow: 'var(--shadow-inset)',
+})

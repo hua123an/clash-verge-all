@@ -49,8 +49,19 @@ export const SettingItem: React.FC<ItemProps> = ({
   }
 
   return clickable ? (
-    <ListItem disablePadding>
-      <ListItemButton onClick={handleClick} disabled={isLoading}>
+    <ListItem disablePadding sx={{ mb: 1 }}>
+      <ListItemButton
+        onClick={handleClick}
+        disabled={isLoading}
+        sx={{
+          minHeight: 58,
+          px: 1.5,
+          borderRadius: '22px',
+          background: 'var(--surface-panel)',
+          border: '1px solid var(--surface-border)',
+          boxShadow: 'var(--shadow-raised-sm)',
+        }}
+      >
         <ListItemText primary={primary} secondary={secondary} />
         {isLoading ? (
           <CircularProgress color="inherit" size={20} />
@@ -60,7 +71,18 @@ export const SettingItem: React.FC<ItemProps> = ({
       </ListItemButton>
     </ListItem>
   ) : (
-    <ListItem sx={{ pt: '5px', pb: '5px' }}>
+    <ListItem
+      sx={{
+        pt: 1,
+        pb: 1,
+        px: 1.5,
+        mb: 1,
+        borderRadius: '22px',
+        background: 'var(--surface-panel)',
+        border: '1px solid var(--surface-border)',
+        boxShadow: 'var(--shadow-raised-sm)',
+      }}
+    >
       <ListItemText primary={primary} secondary={secondary} />
       {children}
     </ListItem>
@@ -71,10 +93,25 @@ export const SettingList: React.FC<{
   title: string
   children: ReactNode
 }> = ({ title, children }) => (
-  <List>
+  <List
+    sx={{
+      p: 1.5,
+      borderRadius: '28px',
+      background: 'var(--surface-panel)',
+      border: '1px solid var(--surface-border)',
+      boxShadow: 'var(--shadow-raised)',
+    }}
+  >
     <ListSubheader
       sx={[
-        { background: 'transparent', fontSize: '16px', fontWeight: '700' },
+        {
+          background: 'transparent',
+          fontSize: '16px',
+          fontWeight: '700',
+          px: 1,
+          pb: 1,
+          mb: 1,
+        },
         ({ palette }) => {
           return {
             color: palette.text.primary,

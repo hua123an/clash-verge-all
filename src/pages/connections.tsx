@@ -133,16 +133,28 @@ const ConnectionsPage = () => {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        borderRadius: '8px',
+        borderRadius: '28px',
         minHeight: 0,
       }}
       header={
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Box sx={{ mx: 1 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
+            px: 1.25,
+            py: 0.75,
+            borderRadius: '22px',
+            background: 'var(--surface-panel)',
+            border: '1px solid var(--surface-border)',
+            boxShadow: 'var(--shadow-raised-sm)',
+          }}
+        >
+          <Box sx={{ mx: 0.5 }}>
             {t('shared.labels.downloaded')}:{' '}
             {parseTraffic(connections?.downloadTotal)}
           </Box>
-          <Box sx={{ mx: 1 }}>
+          <Box sx={{ mx: 0.5 }}>
             {t('shared.labels.uploaded')}:{' '}
             {parseTraffic(connections?.uploadTotal)}
           </Box>
@@ -173,8 +185,8 @@ const ConnectionsPage = () => {
     >
       <Box
         sx={{
-          pt: 1,
-          mb: 0.5,
+          pt: 1.25,
+          mb: 1,
           mx: '10px',
           minHeight: '36px',
           display: 'flex',
@@ -184,6 +196,12 @@ const ConnectionsPage = () => {
           position: 'sticky',
           top: 0,
           zIndex: 2,
+          px: 1.25,
+          py: 0.9,
+          borderRadius: '22px',
+          background: 'var(--surface-panel)',
+          border: '1px solid var(--surface-border)',
+          boxShadow: 'var(--shadow-raised-sm)',
         }}
       >
         <ButtonGroup sx={{ mr: 1, flexBasis: 'content' }}>
@@ -260,7 +278,7 @@ const ConnectionsPage = () => {
           )}
           style={{
             flex: 1,
-            borderRadius: '8px',
+            borderRadius: '24px',
             WebkitOverflowScrolling: 'touch',
             overscrollBehavior: 'contain',
           }}

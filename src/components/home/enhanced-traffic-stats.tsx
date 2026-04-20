@@ -74,17 +74,17 @@ const CompactStatCard = memo(
         sx={{
           display: 'flex',
           alignItems: 'center',
-          borderRadius: 2,
-          bgcolor: alpha(colorValue, 0.05),
-          border: `1px solid ${alpha(colorValue, 0.15)}`,
+          borderRadius: '22px',
+          bgcolor: 'transparent',
+          background: `linear-gradient(145deg, ${alpha(colorValue, 0.1)}, rgba(255,255,255,0.02))`,
+          border: '1px solid var(--surface-border)',
           padding: '8px',
           transition: 'all 0.2s ease-in-out',
+          boxShadow: 'var(--shadow-raised-sm)',
           cursor: onClick ? 'pointer' : 'default',
           '&:hover': onClick
             ? {
-                bgcolor: alpha(colorValue, 0.1),
-                border: `1px solid ${alpha(colorValue, 0.3)}`,
-                boxShadow: `0 4px 8px rgba(0,0,0,0.05)`,
+                boxShadow: 'var(--shadow-inset)',
               }
             : {},
         }}
@@ -101,9 +101,10 @@ const CompactStatCard = memo(
             justifyContent: 'center',
             width: 32,
             height: 32,
-            borderRadius: '50%',
+            borderRadius: '14px',
             bgcolor: alpha(colorValue, 0.1),
             color: colorValue,
+            boxShadow: 'var(--shadow-inset)',
           }}
         >
           {icon}
@@ -140,7 +141,6 @@ CompactStatCard.displayName = 'CompactStatCard'
 
 export const EnhancedTrafficStats = () => {
   const { t } = useTranslation()
-  const theme = useTheme()
   const { verge } = useVerge()
   const trafficRef = useRef<EnhancedCanvasTrafficGraphRef>(null)
   const pageVisible = useVisibility()
@@ -199,9 +199,11 @@ export const EnhancedTrafficStats = () => {
         sx={{
           height: 130,
           cursor: 'pointer',
-          border: `1px solid ${alpha(theme.palette.divider, 0.2)}`,
-          borderRadius: 2,
+          border: '1px solid var(--surface-border)',
+          borderRadius: '24px',
           overflow: 'hidden',
+          background: 'var(--surface-panel-inset)',
+          boxShadow: 'var(--shadow-inset)',
         }}
         onClick={() => trafficRef.current?.toggleStyle()}
       >
@@ -210,7 +212,7 @@ export const EnhancedTrafficStats = () => {
         </div>
       </Paper>
     )
-  }, [trafficGraph, pageVisible, theme.palette.divider])
+  }, [trafficGraph, pageVisible])
 
   // 使用useMemo计算统计卡片配置
   const statCards = useMemo(

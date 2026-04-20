@@ -150,11 +150,14 @@ const SortableColumnItem = ({
       ref={setNodeRef}
       disableGutters
       sx={{
-        px: 1,
-        py: 0.5,
-        borderRadius: 1,
-        border: (theme) => `1px solid ${theme.palette.divider}`,
-        backgroundColor: isDragging ? 'action.hover' : 'transparent',
+        px: 1.25,
+        py: 0.75,
+        borderRadius: '20px',
+        border: '1px solid var(--surface-border)',
+        background: isDragging
+          ? 'var(--surface-panel-inset)'
+          : 'var(--surface-panel)',
+        boxShadow: isDragging ? 'var(--shadow-inset)' : 'var(--shadow-raised-sm)',
         display: 'flex',
         alignItems: 'center',
         gap: 1,

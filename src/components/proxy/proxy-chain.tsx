@@ -136,14 +136,14 @@ const SortableItem = ({
         display: 'flex',
         alignItems: 'center',
         p: 1,
-        backgroundColor: isDragging
-          ? theme.palette.action.selected
-          : theme.palette.background.default,
-        borderRadius: 1,
+        background: isDragging
+          ? 'var(--surface-panel-inset)'
+          : 'var(--surface-panel)',
+        borderRadius: '20px',
         border: roleColor
           ? `1.5px solid ${roleColor}`
-          : `1px solid ${theme.palette.divider}`,
-        boxShadow: isDragging ? theme.shadows[4] : theme.shadows[1],
+          : `1px solid var(--surface-border)`,
+        boxShadow: isDragging ? 'var(--shadow-inset)' : 'var(--shadow-raised-sm)',
         transition: 'box-shadow 0.2s, background-color 0.2s',
       }}
     >
